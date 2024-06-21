@@ -243,6 +243,10 @@ class Dara
      * @return bool
      */
     public static function shouldRetry($options, $ctx) {
+        if($ctx->getRetryCount() === 0) {
+            return true;
+        }
+
         if (!$options || !$options->getRetryable()) {
             return false;
         }

@@ -87,6 +87,8 @@ class RetryTest extends TestCase
 
     public function testShouldRetry()
     {
+        
+
         $condition1 = new RetryCondition([
             'maxAttempts' => 3,
             'exception' => ['AEx'],
@@ -96,6 +98,11 @@ class RetryTest extends TestCase
             'retryable' => true,
             'retryCondition' => [$condition1]
         ]);
+        $context = new RetryPolicyContext([
+            'retriesAttempted' => 0,
+        ]);
+        $this->assertTrue(Dara::shouldRetry($options, $context));
+
         $context = new RetryPolicyContext([
             'retriesAttempted' => 3,
             'exception' => new AEx([
@@ -179,6 +186,7 @@ class RetryTest extends TestCase
         $this->assertFalse(Dara::shouldRetry($options, $context));
 
         $context = new RetryPolicyContext([
+            'retriesAttempted' => 2,
             'exception' => new BEx([
                 'errCode' => 'A1Ex',
                 'message' => 'b1 error'

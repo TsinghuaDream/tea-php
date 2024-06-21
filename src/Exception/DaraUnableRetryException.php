@@ -1,8 +1,9 @@
 <?php
 
-namespace AlibabaCloud\Tea\Exception;
+namespace AlibabaCloud\Dara\Exception;
 
-use AlibabaCloud\Tea\Request;
+use AlibabaCloud\Dara\Request;
+use AlibabaCloud\Dara\RetryPolicy\RetryPolicyContext;
 
 /**
  * Class DaraUnableRetryException.
@@ -20,8 +21,12 @@ class DaraUnableRetryException extends DaraException
      */
     public function __construct($lastRequest, $lastException = null)
     {
+        if($lastRequest instanceof RetryPolicyContext) {
+            $lastException = $lastRequest->getException();
+            $lastRequest = $lastRequest->getHttpRequest();
+        }
         $error_info = [];
-        if (null !== $lastException && $lastException instanceof TeaError) {
+        if (null !== $lastException && $lastException instanceof DaraException) {
             $error_info = $lastException->getErrorInfo();
         }
         parent::__construct($error_info, $lastException->getMessage(), $lastException->getCode(), $lastException);

@@ -19,7 +19,7 @@ class DaraException extends RuntimeException
     protected $errorInfo;
 
     /**
-     * TeaError DaraException.
+     * DaraError DaraException.
      *
      * @param array           $errorInfo
      * @param string          $message

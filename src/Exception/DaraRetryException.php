@@ -1,6 +1,6 @@
 <?php
 
-namespace AlibabaCloud\Tea\Exception;
+namespace AlibabaCloud\Dara\Exception;
 
 /**
  * Class DaraRetryException

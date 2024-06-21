@@ -64,5 +64,14 @@ class BytesTest extends TestCase
             115, 116, 114, 105, 110, 103,
         ]));
         $this->assertEquals('string', BytesUtil::toString('string'));
+        $this->assertEquals('string', BytesUtil::toString([
+            115, 116, 114, 105, 110, 103,
+        ], 'utf8'));
+        $this->assertEquals('737472696e67', BytesUtil::toString([
+            115, 116, 114, 105, 110, 103,
+        ], 'hex'));
+        $this->assertEquals('c3RyaW5n', BytesUtil::toString([
+            115, 116, 114, 105, 110, 103,
+        ], 'base64'));
     }
 }

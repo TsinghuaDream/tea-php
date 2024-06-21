@@ -73,7 +73,7 @@ class BytesUtil
      * @param int[] $bytes
      * @return string
      */
-    public static function toString($bytes)
+    public static function toString($bytes, $type = 'utf8')
     {
         if (\is_string($bytes)) {
             return $bytes;
@@ -81,6 +81,14 @@ class BytesUtil
         $str = '';
         foreach ($bytes as $ch) {
             $str .= \chr($ch);
+        }
+
+        if($type == 'hex') {
+            return bin2hex($str);
+        }
+
+        if($type == 'base64') {
+            return base64_encode($str);
         }
 
         return $str;

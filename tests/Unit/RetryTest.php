@@ -20,7 +20,7 @@ class AEx extends DaraException {
     /**
     * @var string[]
     */
-    protected $data;
+    public $data;
   
     public function __construct($map)
     {
@@ -38,7 +38,7 @@ class BEx extends DaraException {
     /**
     * @var string[]
     */
-    protected $data;
+    public $data;
   
     public function __construct($map)
     {
@@ -55,7 +55,7 @@ class CEx extends DaraRespException {
     /**
     * @var string[]
     */
-    protected $data;
+    public $data;
   
     public function __construct($map)
     {

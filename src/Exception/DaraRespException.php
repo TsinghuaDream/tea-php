@@ -7,11 +7,11 @@ namespace AlibabaCloud\Dara\Exception;
  */
 class DaraRespException extends DaraException
 {
-    protected $statusCode;
+    public $statusCode;
     protected $retryAfter;
-    protected $data;
-    protected $accessDeniedDetail;
-    protected $description;
+    public $data;
+    public $accessDeniedDetail;
+    public $description;
 
     /**
      * DaraRespException constructor.

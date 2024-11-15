@@ -2,21 +2,21 @@
 
 namespace AlibabaCloud\Dara\Exception;
 
-use RuntimeException;
+use AlibabaCloud\Tea\Exception\TeaError;
 
 /**
  * Class DaraException.
  */
-class DaraException extends RuntimeException
+class DaraException extends TeaError
 {
-    protected $message = '';
-    protected $errCode = '';
-    protected $data;
-    protected $name    = '';
-    protected $statusCode;
-    protected $description;
-    protected $accessDeniedDetail;
-    protected $errorInfo;
+    public $message = '';
+    public $errCode = '';
+    public $data;
+    public $name    = '';
+    public $statusCode;
+    public $description;
+    public $accessDeniedDetail;
+    public $errorInfo;
 
     /**
      * DaraError DaraException.
@@ -28,7 +28,7 @@ class DaraException extends RuntimeException
      */
     public function __construct($errorInfo = [], $message = '', $code = '', $previous = null)
     {
-        parent::__construct((string) $message, -1, $previous);
+        parent::__construct($errorInfo, $message, $code, $previous);
         $this->errorInfo = $errorInfo;
         $this->name = 'BaseError';
         if (!empty($errorInfo)) {

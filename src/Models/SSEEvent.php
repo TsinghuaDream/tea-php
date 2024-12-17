@@ -23,12 +23,7 @@ class SSEEvent extends Model {
     {
         $res = [];
         if (null !== $this->data) {
-            if(is_array($this->data)){
-                $res['data'] = [];
-                foreach($this->data as $key => $value) {
-                    $res['data'][$key] = $value;
-                }
-            }
+            $res['data'] = $this->data;
         }
 
         if (null !== $this->id) {

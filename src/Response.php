@@ -56,9 +56,9 @@ class Response extends PsrResponse implements ArrayAccess, IteratorAggregate, Co
             $this->body->seek(0);
         }
 
+        $contentType = $this->getHeaderLine('Content-Type');
 
-        if(isset($this->headers['Content-type']) && isset($this->headers['Content-type'][0])
-        && StringUtil::hasPrefix($this->headers['Content-type'][0], 'text/event-stream')) {
+        if(StringUtil::hasPrefix($contentType, 'text/event-stream')) {
             return;
         }
 
